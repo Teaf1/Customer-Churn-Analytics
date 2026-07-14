@@ -105,3 +105,22 @@ ON T.InternetService = C.InternetService;
 -- while customers with no internet service have the lowest churn rate (7.40%).
 -- This suggests that customers using Fiber Optic service are more likely to churn
 -- compared to customers using other internet service types.
+
+
+-- Customer Count by Senior Citizen Status
+SELECT
+    CASE
+        WHEN SeniorCitizen = 1 THEN 'Senior'
+        ELSE 'Non-Senior'
+    END AS Customer_Type,
+    COUNT(*) AS Total_Customers
+FROM customers
+GROUP BY
+    CASE
+        WHEN SeniorCitizen = 1 THEN 'Senior'
+        ELSE 'Non-Senior'
+    END;
+
+-- Insight:
+-- Most customers are Non-Senior, while Senior customers represent a smaller
+-- portion of the customer base.
